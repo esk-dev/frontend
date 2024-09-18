@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { ENVIRONMENT, IEnvironment } from '../config';
+import { ENVIRONMENT, IEnvironment } from '@core/env';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +12,9 @@ export class HttpService {
     @Inject(ENVIRONMENT) private readonly env: IEnvironment
   ) {}
 
-  delete<T = void>(url: string, options?: any): Observable<T> {
+  delete<T = void>(url: string, options?: any): Observable<HttpEvent<T>> {
     return this.httpClient
-      .delete<T>(this.makeUrl(url), {})
+      .delete<T>(this.makeUrl(url), options)
       .pipe(catchError((error) => throwError(() => error)));
   }
 
