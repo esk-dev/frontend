@@ -1,0 +1,14 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@use "../colors/variables" as var;
+@use "../typography/config" as typography;
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: var.$light-primary,
+    accent: var.$light-accent ,
+    warn: var.$light-warn,
+  ),
+  typography: typography.$custom-typography
+));
