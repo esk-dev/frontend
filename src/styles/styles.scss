@@ -1,11 +1,11 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use "@angular/material" as mat;
-@use "./themes/light";
-@use "./themes/dark";
-@use "./colors/variables.scss" as colors;
-@use "./mixins/media-query" as media-mixins;
-@use "sass:map";
+@use '@angular/material' as mat;
+@use './themes/light';
+@use './themes/dark';
+@use './colors/variables.scss' as colors;
+@use './mixins/media-query' as media-mixins;
+@use 'sass:map';
 
 @include mat.core();
 
@@ -20,13 +20,24 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
-  font-family: "JetBrains Mono", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    'JetBrains Mono',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
 }
 
 * {

@@ -1,7 +1,7 @@
-@use "sass:map";
-@use "@angular/material" as mat;
-@use "../colors/variables" as var;
-@use "../typography/config" as typography;
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '../colors/variables' as var;
+@use '../typography/config' as typography;
 
 $dark-theme: mat.define-dark-theme(
   (

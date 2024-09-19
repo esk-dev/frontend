@@ -1,0 +1,22 @@
+<mat-toolbar class="mat-toolbar">
+  <span>Notes App</span>
+
+  @if (showMenu$ | async) {
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <nav class="nav-menu">
+        @for (navLink of navLinks; track navLink.route) {
+          <notes-link [navLink]="navLink" />
+        }
+      </nav>
+    </mat-menu>
+  } @else {
+    <nav class="nav-links">
+      @for (navLink of navLinks; track navLink.route) {
+        <notes-link [navLink]="navLink" />
+      }
+    </nav>
+  }
+</mat-toolbar>

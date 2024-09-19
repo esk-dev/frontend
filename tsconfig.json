@@ -22,7 +22,11 @@
     "baseUrl": ".",
     "paths": {
       "@core/http": ["src/app/core/http/index.ts"],
-      "@core/env": ["src/app/core/env/index.ts"]
+      "@core/env": ["src/app/core/env/index.ts"],
+      "@core/navigation": ["src/app/core/navigation/index.ts"],
+      "@core/*": ["src/app/core/*"],
+      "@ui/*": ["src/app/ui/*"],
+      "@pages/*": ["src/app/pages/*"]
     }
   },
   "angularCompilerOptions": {

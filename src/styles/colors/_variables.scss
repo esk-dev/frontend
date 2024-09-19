@@ -1,13 +1,5 @@
-@use "sass:map";
-@use "@angular/material" as mat;
-
-// $dark-primary: mat.define-palette(mat.$gray-palette, 400, 200, 600);
-// $dark-accent: mat.define-palette(mat.$blue-palette, 900);
-// $dark-warn: mat.define-palette(mat.$red-palette, A700, A400, A200);
-
-// $light-primary: mat.define-palette(mat.$blue-grey-palette, 800, 600, 900 );
-// $light-accent: mat.define-palette(mat.$blue-palette, 200, 100, 300);
-// $light-warn: mat.define-palette(mat.$red-palette, A200, A100, A400);
+@use 'sass:map';
+@use '@angular/material' as mat;
 
 $dark-primary: mat.define-palette(mat.$gray-palette);
 $dark-accent: mat.define-palette(mat.$blue-palette);
@@ -17,15 +9,8 @@ $light-primary: mat.define-palette(mat.$blue-grey-palette);
 $light-accent: mat.define-palette(mat.$blue-palette);
 $light-warn: mat.define-palette(mat.$red-palette);
 
+$palette: ($dark-primary, $dark-accent, $dark-warn, $light-primary, $light-accent, $light-warn);
 
-$palette: (
-  $dark-primary,
-  $dark-accent,
-  $dark-warn,
-  $light-primary,
-  $light-accent,
-  $light-warn,
-);
 
 @function get-color($keys...) {
   $value: $palette;
@@ -36,14 +21,3 @@ $palette: (
 
   @return $value;
 }
-// $light-primary: (
-//   default: map-get(mat.$blue-grey-palette, 800),
-//   light: map-get(mat.$blue-grey-palette, 600),
-//   dark: map-get(mat.$blue-grey-palette, 900),
-// );
-
-// $dark-primary: (
-//   default: map-get(mat.$gray-palette, 400),
-//   light: map-get(mat.$gray-palette, 400),
-//   dark: map-get(mat.$gray-palette, 400),
-// );

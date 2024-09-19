@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Заголовок</mat-label>
+    <input placeholder="Введите заголовок" matInput [formControl]="form.controls.title" formControlName="title" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Подзаголовок</mat-label>
+    <input placeholder="Введите подзаголовок" matInput [formControl]="form.controls.sub_title" formControlName="sub_title" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Содержание</mat-label>
+    <textarea placeholder="Введите содержание" matInput [formControl]="form.controls.content" formControlName="content"></textarea>
+  </mat-form-field>
+  <notes-tags-autocomplete-control [formControl]="form.controls.tags" formControlName="tags" />
+</form>
