@@ -1,43 +1,43 @@
 import { inject, Injectable } from '@angular/core';
-import { WA_WINDOW } from '@core/tokens/window.token';
-import { SESSION_STORAGE } from '@core/tokens/local-storage.token';
+import { WA_WINDOW } from '@core/local-storage/tokens/window.token';
+import { SESSION_STORAGE } from '@core/local-storage/tokens/session-storage.token';
 
 @Injectable({
   providedIn: 'root',
 })
-export class StorageService implements Storage {
-  private readonly localStorage = inject(SESSION_STORAGE);
+export class SessionStorageService implements Storage {
+  private readonly sessionStorage = inject(SESSION_STORAGE);
   private readonly windowRef = inject(WA_WINDOW);
 
   public get length(): number {
-    return this.localStorage.length;
+    return this.sessionStorage.length;
   }
 
   public getItem(key: string): string | null {
-    return this.localStorage.getItem(key);
+    return this.sessionStorage.getItem(key);
   }
 
   public setItem(key: string, value: string): void {
     const oldValue = this.getItem(key);
 
-    this.localStorage.setItem(key, value);
+    this.sessionStorage.setItem(key, value);
     this.notify(key, value, oldValue);
   }
 
   public removeItem(key: string): void {
     const oldValue = this.getItem(key);
 
-    this.localStorage.removeItem(key);
+    this.sessionStorage.removeItem(key);
     this.notify(key, null, oldValue);
   }
 
   public clear(): void {
-    this.localStorage.clear();
+    this.sessionStorage.clear();
     this.notify(null, null, null);
   }
 
   public key(index: number): string | null {
-    return this.localStorage.key(index);
+    return this.sessionStorage.key(index);
   }
 
   private notify(key: string | null, newValue: string | null, oldValue: string | null): void {
@@ -45,7 +45,7 @@ export class StorageService implements Storage {
       key,
       newValue,
       oldValue,
-      storageArea: this.localStorage,
+      storageArea: this.sessionStorage,
       url: this.windowRef.location.href,
     });
 

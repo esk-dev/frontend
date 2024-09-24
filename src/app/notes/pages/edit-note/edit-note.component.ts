@@ -5,7 +5,7 @@ import { MatButton } from '@angular/material/button';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { createNoteForm, mapToTagName } from '@app/notes/ui/note-form/create-note-form';
 import { NoteForm } from '@app/notes/pages/create-note/create-note.component';
-import { NotesStore } from '@notes/state/notes.store';
+import { NotesStore } from '@notes/notes.store';
 import { INote } from '@core/dtos/note';
 import { getState } from '@ngrx/signals';
 import { NoteFormFields } from '@core/dtos/note-form';

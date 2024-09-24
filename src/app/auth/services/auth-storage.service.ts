@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from '@core/storage/service/storage.service';
+import { SessionStorageService } from '@core/local-storage/service/session-storage.service';
 import { IUserData } from '@app/auth/user.interface';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, share } from 'rxjs';
 
 const USER_KEY = 'user';
 
@@ -9,26 +9,28 @@ const USER_KEY = 'user';
   providedIn: 'root',
 })
 export class AuthStorageService {
-  public isAuthed$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private readonly _isAuthed$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private readonly storageService: StorageService) {
-    this.isAuthed$.next(this.isLoggedIn());
+  constructor(private readonly storageService: SessionStorageService) {
+    this._isAuthed$.next(this.isLoggedIn());
   }
 
+  get isAuthed$() {
+    return this._isAuthed$.asObservable();
+  }
   clean(): void {
     this.storageService.clear();
-    this.isAuthed$.next(false);
+    this._isAuthed$.next(false);
   }
 
   saveUser(user: IUserData): void {
     this.storageService.removeItem(USER_KEY);
     this.storageService.setItem(USER_KEY, JSON.stringify(user));
-    this.isAuthed$.next(true);
+    this._isAuthed$.next(true);
   }
 
   getUser(): IUserData | null {
     const user: string | null = this.storageService.getItem(USER_KEY);
-    console.log(user);
     if (user) {
       return JSON.parse(user);
     }

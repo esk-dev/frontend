@@ -1,7 +1,7 @@
 <notes-container>
   <section class="notes-grid">
     @for (note of notes(); track note.id) {
-      <notes-note-card [note]="note" (editNote)="redirectToEditPage($event)" />
+      <notes-note-card [note]="note" (editNote)="redirectToEditPage($event)" (deleteNote)="requestDeleteNote($event)"/>
     }
   </section>
 </notes-container>

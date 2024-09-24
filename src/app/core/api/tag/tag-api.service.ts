@@ -12,7 +12,7 @@ export class TagApiService extends BaseApiService {
     super('Tags');
   }
 
-  public getTagsByName(tagName: string): Observable<ITag[]> {
+  public getTagsByName(query: string): Observable<ITag[]> {
     const uri = this.apiUri;
     return this.httpService.get<ITag[]>(`/${uri}`);
   }
