@@ -1,0 +1,7 @@
+<notes-container>
+  <section class="notes-grid">
+    @for (note of notes(); track note.id) {
+      <notes-note-card [note]="note" (editNote)="redirectToEditPage($event)" />
+    }
+  </section>
+</notes-container>

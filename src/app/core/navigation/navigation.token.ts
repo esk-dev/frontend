@@ -1,20 +1,20 @@
 import { InjectionToken, EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
-import { NAVIGATION_LINKS, NAVIGATION_PATHS } from './paths';
-import { INavigationLink, INavigationPaths } from './navigation.interface';
-
-export const PATHS = new InjectionToken<INavigationPaths>('NavigationPaths');
+import { AUTH_LINKS, NAVIGATION_LINKS } from './paths';
+import { INavigationLink } from './navigation.interface';
 
 export const LINKS = new InjectionToken<INavigationLink[]>('NavigationLinks');
+
+export const UNAUTHORIZED_LINKS = new InjectionToken<INavigationLink[]>('UnauthorizedLinks');
 
 export function provideNavigationPaths(): EnvironmentProviders {
   return makeEnvironmentProviders([
     {
-      provide: PATHS,
-      useValue: NAVIGATION_PATHS,
-    },
-    {
       provide: LINKS,
       useValue: NAVIGATION_LINKS,
+    },
+    {
+      provide: UNAUTHORIZED_LINKS,
+      useValue: AUTH_LINKS,
     },
   ]);
 }

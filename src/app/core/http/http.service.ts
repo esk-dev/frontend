@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpParamsOptions } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ENVIRONMENT, IEnvironment } from '@core/env';

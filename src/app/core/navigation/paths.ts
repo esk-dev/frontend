@@ -1,20 +1,13 @@
-import { INavigationLink, INavigationPaths } from './navigation.interface';
-
-export const NAVIGATION_PATHS: INavigationPaths = {
-  main: 'main',
-  notes: 'notes',
-  tags: 'tags',
-  create_note: 'create_note',
-};
+import { INavigationLink } from './navigation.interface';
 
 export const NAVIGATION_LINKS: INavigationLink[] = [
   {
-    route: 'main',
-    label: 'Главная',
+    route: 'notes/list',
+    label: 'Заметки',
   },
   {
-    route: 'notes',
-    label: 'Заметки',
+    route: 'notes/create',
+    label: 'Создать заметку',
   },
   {
     route: 'tags',
@@ -22,5 +15,13 @@ export const NAVIGATION_LINKS: INavigationLink[] = [
   },
 ];
 
-export const getLinkByRoute = (route: keyof INavigationPaths): INavigationLink | undefined =>
-  NAVIGATION_LINKS.find((link) => link.route === route);
+export const AUTH_LINKS: INavigationLink[] = [
+  {
+    route: 'auth/login',
+    label: 'Логин',
+  },
+  {
+    route: 'auth/register',
+    label: 'Регистрация',
+  },
+];

@@ -1,0 +1,10 @@
+@use '../../../../styles/mixins/media-query' as devices;
+
+.notes-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

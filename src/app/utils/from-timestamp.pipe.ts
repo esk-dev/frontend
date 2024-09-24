@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class FromTimestampPipe implements PipeTransform {
-  transform(value: number): Date {
-    return new Date(value * 1000);
+  transform(value: string): Date {
+    return new Date(value);
   }
 }

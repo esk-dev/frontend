@@ -1,0 +1,5 @@
+<form [formGroup]="form">
+  <notes-note-title [control]="form.controls['title']" />
+  <notes-note-content [control]="form.controls['content']" />
+  <notes-tags-autocomplete-control [formControl]="form.controls['tags']" />
+</form>

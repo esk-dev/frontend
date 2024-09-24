@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { INavigationLink } from '@core/navigation';
 import { MatButtonModule } from '@angular/material/button';
+import { INavigationLink } from '@core/navigation/navigation.interface';
 
 @Component({
   selector: 'notes-link',

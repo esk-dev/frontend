@@ -43,3 +43,15 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.is-success {
+  --mdc-snackbar-container-color: #549654;
+}
+
+.is-error {
+  --mdc-snackbar-container-color: rgba(255, 86, 86, 0.95);
+}
+
+.warning {
+  --mdc-snackbar-container-color: rgb(193, 201, 40);
+}
