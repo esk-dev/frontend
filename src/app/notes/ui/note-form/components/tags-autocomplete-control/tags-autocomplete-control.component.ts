@@ -1,14 +1,15 @@
 import { Component, ElementRef, forwardRef, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { ITag } from '@core/dtos/tag';
-import { BehaviorSubject, debounceTime, distinctUntilChanged, filter, Observable, of, startWith, switchMap, tap } from 'rxjs';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { ITag } from '@core/models/tag';
+import { BehaviorSubject, debounceTime, distinctUntilChanged, filter, Observable, startWith, switchMap } from 'rxjs';
+import { MatFormField, MatHint, MatLabel } from '@angular/material/form-field';
 import { MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRemove, MatChipRow } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
 import { MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatOption } from '@angular/material/autocomplete';
 import { AsyncPipe } from '@angular/common';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { TagApiService } from '@core/api/tag/tag-api.service';
+import { FormErrorComponent } from '@app/utils/form/form-error/form-error.component';
 
 @Component({
   selector: 'notes-tags-autocomplete-control',
@@ -26,6 +27,8 @@ import { TagApiService } from '@core/api/tag/tag-api.service';
     MatOption,
     ReactiveFormsModule,
     MatLabel,
+    MatHint,
+    FormErrorComponent,
   ],
   providers: [
     {
@@ -68,7 +71,7 @@ export class TagsAutocompleteControlComponent implements OnInit, ControlValueAcc
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.isDisabled$.next(isDisabled);
+    this.isDisabled$.next(Boolean(isDisabled));
   }
 
   writeValue(value: ITag[]): void {
@@ -126,6 +129,8 @@ export class TagsAutocompleteControlComponent implements OnInit, ControlValueAcc
    * @param str
    */
   fetchTagsByStr$(str: string): Observable<ITag[]> {
-    return of(this.value$.value);
+    return this.tagApiService.searchTagsByName(str);
   }
+
+  protected readonly Boolean = Boolean;
 }

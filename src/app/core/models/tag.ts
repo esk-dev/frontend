@@ -1,4 +1,4 @@
-import { TModel } from '@core/dtos/util-types';
+import { TModel } from '@core/models/util-types';
 
 export interface ITag extends TModel {
   tagName: string;

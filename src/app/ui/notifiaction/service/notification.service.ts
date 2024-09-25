@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { MaNotification, NotificationComponentType, NotificationType, NotifyComponentsType } from '@ui/notifiaction/notification.types';
-import { connectable, ReplaySubject, share } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
-  private durationInSeconds = 10000;
+  private durationInSeconds = 1000;
   private _snackBar = inject(MatSnackBar);
   private notifyRequest: ReplaySubject<MaNotification> = new ReplaySubject<MaNotification>(2, 100);
 

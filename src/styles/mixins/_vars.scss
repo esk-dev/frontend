@@ -10,3 +10,12 @@
   -webkit-box-shadow: 0px 2px 8px 4px rgb(139 139 139 / 32%);
   -moz-box-shadow: 0px 2px 15px 2px rgb(139 139 139 / 32%);
 }
+
+@mixin icon {
+  transition: all 0.25s ease-in-out;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 90%;
+  width: 24px;
+  height: 24px;
+}

@@ -19,6 +19,12 @@ export const routes: Routes = [
         canActivate: [authGuard],
       },
       {
+        title: 'Напоминания',
+        path: 'reminders',
+        loadComponent: () => import('@app/reminders/pages/reminders/reminders.component').then((m) => m.RemindersComponent),
+        canActivate: [authGuard],
+      },
+      {
         title: 'Теги',
         path: 'tags',
         loadComponent: () => import('@app/tags/pages/tags/tags.component').then((m) => m.TagsComponent),

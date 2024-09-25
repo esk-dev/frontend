@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseApiService } from '@core/api/common/base-api.service';
-import { ITag } from '@core/dtos/tag';
+import { ITag } from '@core/models/tag';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 
@@ -12,8 +12,13 @@ export class TagApiService extends BaseApiService {
     super('Tags');
   }
 
-  public getTagsByName(query: string): Observable<ITag[]> {
-    const uri = this.apiUri;
-    return this.httpService.get<ITag[]>(`/${uri}`);
+  public searchTagsByName(query: string): Observable<ITag[]> {
+    return this.httpService.get<ITag[]>(`/${this.apiUri}/search`, {
+      params: new HttpParams({
+        fromObject: {
+          query,
+        },
+      }),
+    });
   }
 }

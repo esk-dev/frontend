@@ -12,6 +12,7 @@
       }
     </mat-chip-grid>
     <input
+      [disabled]="Boolean(isDisabled$ | async)"
       placeholder="Введите название тега"
       #input
       [formControl]="tagsCntrl"
@@ -21,6 +22,7 @@
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
       (matChipInputTokenEnd)="add($event)"
     />
+    <mat-hint>Для добавления тега нажмите ENTER</mat-hint>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
       @for (matchedTag of matchedTags$ | async; track matchedTag) {
         <mat-option [value]="matchedTag">{{ matchedTag.tagName }}</mat-option>

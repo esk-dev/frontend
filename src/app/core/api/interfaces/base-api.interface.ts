@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { HttpService } from '@core/http';
-import { TModel } from '@core/dtos/util-types';
+import { TModel } from '@core/models/util-types';
 import { HttpEvent } from '@angular/common/http';
 
 export interface IBaseApi {

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
-import { ITag } from '@core/dtos/tag';
+import { ITag } from '@core/models/tag';
 import { MatChipsModule } from '@angular/material/chips';
 
 @Component({

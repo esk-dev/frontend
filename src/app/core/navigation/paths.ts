@@ -10,6 +10,10 @@ export const NAVIGATION_LINKS: INavigationLink[] = [
     label: 'Создать заметку',
   },
   {
+    route: 'reminders',
+    label: 'Напоминания',
+  },
+  {
     route: 'tags',
     label: 'Теги',
   },

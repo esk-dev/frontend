@@ -2,15 +2,14 @@ import { Component, DestroyRef, inject } from '@angular/core';
 import { NoteFormComponent } from '../../ui/note-form/note-form.component';
 import { ContainerComponent } from '@ui/container/container.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ITag } from '@core/dtos/tag';
 import { FormFor } from '@app/utils/form/form';
-import { NoteFormFields } from '@core/dtos/note-form';
+import { NoteFormFields } from '@notes/ui/note-form/common/note-form.types';
 import { MatButton } from '@angular/material/button';
-import { createNoteForm, mapToTagName } from '@app/notes/ui/note-form/create-note-form';
+import { createNoteFormUtil, mapToTagName } from '@notes/ui/note-form/common/create-note-form.util';
 import { NoteApiService } from '@api/note/note-api.service';
 import { Router } from '@angular/router';
 import { NotificationService } from '@ui/notifiaction/service/notification.service';
-import { INote } from '@core/dtos/note';
+import { INote } from '@core/models/note';
 import { take } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -36,7 +35,7 @@ export class CreateNoteComponent {
     private readonly notesApiService: NoteApiService,
     private readonly notifyService: NotificationService,
   ) {
-    this.form = createNoteForm(this.fb);
+    this.form = createNoteFormUtil(this.fb);
   }
 
   onSubmit(): void {

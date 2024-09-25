@@ -1,5 +1,5 @@
 import { NoteApiService } from '@api/note/note-api.service';
-import { INote } from '@core/dtos/note';
+import { INote } from '@core/models/note';
 import { patchState, signalStore, withComputed, withMethods } from '@ngrx/signals';
 import { computed, inject } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
@@ -26,7 +26,7 @@ export const NotesStore = signalStore(
                 patchState(store, removeEntity(noteId));
               },
               error: (error) => {
-                notifyService.error('Ошибка при удалении заметки', String(error?.error));
+                notifyService.error('Ошибка при удалении заметки');
                 console.log(error);
               },
             }),
@@ -44,7 +44,7 @@ export const NotesStore = signalStore(
                 patchState(store, setAllEntities([notes]));
               },
               error: (error) => {
-                notifyService.error('Ошибка при загрузке заметки', String(error?.error));
+                notifyService.error('Ошибка при загрузке заметки');
                 console.log(error);
               },
             }),
@@ -62,7 +62,7 @@ export const NotesStore = signalStore(
                 router.navigate(['/notes/']);
               },
               error: (error) => {
-                notifyService.error('Ошибка при редактировании заметок', String(error?.error));
+                notifyService.error('Ошибка при редактировании заметок');
                 console.log(error);
               },
             }),
@@ -80,7 +80,7 @@ export const NotesStore = signalStore(
                 patchState(store, {});
               },
               error: (error) => {
-                notifyService.error('Ошибка при загрузке заметок', String(error?.error));
+                notifyService.error('Ошибка при загрузке заметок');
                 console.log(error);
               },
             }),

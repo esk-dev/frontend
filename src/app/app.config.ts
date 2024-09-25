@@ -10,6 +10,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideNavigationPaths } from '@core/navigation/navigation.token';
 import { headersInterceptor } from '@core/http/interceptors/headers.interceptor';
 import { DATE_PIPE_DEFAULT_OPTIONS, registerLocaleData } from '@angular/common';
+
 registerLocaleData(localeRu, 'ru');
 
 export const appConfig: ApplicationConfig = {

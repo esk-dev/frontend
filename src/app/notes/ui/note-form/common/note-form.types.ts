@@ -1,4 +1,4 @@
-import { INote } from '@core/dtos/note';
+import { INote } from '@core/models/note';
 /**
  *  @description Поля для заполнения из формы
  */

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormFor } from '@app/utils/form/form';
 import { AuthService } from '@app/auth/services/auth.service';
@@ -13,6 +13,9 @@ import { MatDivider } from '@angular/material/divider';
 import { MatButton } from '@angular/material/button';
 import { AsyncPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { AUTH_FORM_VALIDATORS, digitValidator, noCyrillicValidator, nonAlphanumericValidator } from '@app/auth/auth.validator';
+import { FormErrorComponent } from '@app/utils/form/form-error/form-error.component';
+import { NotificationService } from '@ui/notifiaction/service/notification.service';
 
 interface TRegister {
   username: string;
@@ -37,6 +40,7 @@ interface TRegister {
     MatButton,
     MatLabel,
     AsyncPipe,
+    FormErrorComponent,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
@@ -44,17 +48,22 @@ interface TRegister {
 })
 export class RegisterComponent {
   public form: FormGroup<FormFor<TRegister>> = new FormGroup<FormFor<TRegister>>({
-    email: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-    password: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-    username: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    username: new FormControl('', { nonNullable: true, validators: [Validators.required, noCyrillicValidator()] }),
+    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
+    password: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(6), nonAlphanumericValidator(), digitValidator()],
+    }),
   });
 
   public readonly loading$: Subject<boolean> = new Subject();
   private readonly destroyRef = inject(DestroyRef);
 
   constructor(
-    private readonly authService: AuthService,
     private readonly router: Router,
+    private readonly cdRef: ChangeDetectorRef,
+    private readonly authService: AuthService,
+    private readonly notifyService: NotificationService,
   ) {}
 
   onSubmit(): void {
@@ -67,7 +76,7 @@ export class RegisterComponent {
     }
     this.form.disable();
 
-    const { email, password, username } = this.form.getRawValue();
+    const { email, password, username }: Record<string, string> = this.form.value;
 
     this.authService
       .register(username, email, password)
@@ -81,9 +90,12 @@ export class RegisterComponent {
           this.router.navigate(['/notes']);
         },
         error: (error) => {
-          console.log(error);
+          this.notifyService.error('Ошибка при регистрации');
+          console.error(error);
           this.form.enable();
         },
       });
   }
+
+  protected readonly AUTH_FORM_VALIDATORS = AUTH_FORM_VALIDATORS;
 }

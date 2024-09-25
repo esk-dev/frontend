@@ -3,12 +3,12 @@ import { ContainerComponent } from '@ui/container/container.component';
 import { NoteFormComponent } from '@app/notes/ui/note-form/note-form.component';
 import { MatButton } from '@angular/material/button';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { createNoteForm, mapToTagName } from '@app/notes/ui/note-form/create-note-form';
+import { createNoteFormUtil, mapToTagName } from '@notes/ui/note-form/common/create-note-form.util';
 import { NoteForm } from '@app/notes/pages/create-note/create-note.component';
 import { NotesStore } from '@notes/notes.store';
-import { INote } from '@core/dtos/note';
+import { INote } from '@core/models/note';
 import { getState } from '@ngrx/signals';
-import { NoteFormFields } from '@core/dtos/note-form';
+import { NoteFormFields } from '@notes/ui/note-form/common/note-form.types';
 
 @Component({
   selector: 'notes-edit-note',
@@ -28,7 +28,7 @@ export class EditNoteComponent implements OnInit {
   private readonly notesStore = inject(NotesStore);
 
   constructor(private readonly fb: FormBuilder) {
-    this.form = createNoteForm(this.fb);
+    this.form = createNoteFormUtil(this.fb);
     effect(() => {
       const state = getState(this.notesStore);
       this.editedNote = state.entityMap[this.id()];

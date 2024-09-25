@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
-import { ConfirmationDialogData } from '@ui/modals/confirmation-dialog-data.interface';
+import { ConfirmationDialogData } from '@ui/modals/confirmation-dialog/confirmation-dialog-data.interface';
 import { MatButton } from '@angular/material/button';
 
 @Component({

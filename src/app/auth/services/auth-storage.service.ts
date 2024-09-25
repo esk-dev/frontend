@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SessionStorageService } from '@core/local-storage/service/session-storage.service';
 import { IUserData } from '@app/auth/user.interface';
-import { BehaviorSubject, share } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const USER_KEY = 'user';
 

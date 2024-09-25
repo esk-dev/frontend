@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from '@core/http';
 import { BaseApiService } from '@core/api/common/base-api.service';
-import { INote } from '@core/dtos/note';
-import { ITag } from '@core/dtos/tag';
+import { INote } from '@core/models/note';
+import { ITag } from '@core/models/tag';
 import { Observable } from 'rxjs';
 import { HttpEvent } from '@angular/common/http';
 import { INoteApi } from '@api/interfaces/note-api.interface';

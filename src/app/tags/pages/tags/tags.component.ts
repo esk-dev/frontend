@@ -5,7 +5,7 @@ import { MatChipEditedEvent, MatChipGrid, MatChipInput, MatChipInputEvent, MatCh
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { ITag } from '@core/dtos/tag';
+import { ITag } from '@core/models/tag';
 import { TagsStore } from '@app/tags/pages/tags.store';
 
 @Component({

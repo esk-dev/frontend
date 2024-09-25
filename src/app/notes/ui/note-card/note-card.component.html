@@ -3,8 +3,7 @@
     {{ note().title }}
   </h3>
   <div class="actions">
-    <mat-icon (click)="onEdit(note())" class="edit-icon">edit</mat-icon>
-    <mat-icon (click)="onDelete(note())" class="delete-icon"> delete </mat-icon>
+    <ng-content></ng-content>
   </div>
 </div>
 <mat-divider />

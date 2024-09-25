@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 import { MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatDivider } from '@angular/material/divider';
 import { MatChipGrid, MatChipRow } from '@angular/material/chips';
 import { DatePipe } from '@angular/common';
-import { INote } from '@core/dtos/note';
+import { INote } from '@core/models/note';
 import { TagBadgeComponent } from '@app/tags/ui/tag-badge/tag-badge.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'notes-note-card',
@@ -30,16 +29,4 @@ import { Router } from '@angular/router';
 })
 export class NoteCardComponent {
   public readonly note: InputSignal<INote> = input.required();
-
-  public readonly deleteNote: OutputEmitterRef<INote> = output<INote>();
-
-  public readonly editNote: OutputEmitterRef<INote> = output<INote>();
-
-  onEdit(note: INote): void {
-    this.editNote.emit(note);
-  }
-
-  onDelete(note: INote): void {
-    this.deleteNote.emit(note);
-  }
 }

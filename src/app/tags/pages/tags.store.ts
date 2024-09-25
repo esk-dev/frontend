@@ -1,6 +1,6 @@
 import { patchState, signalStore, type, withMethods } from '@ngrx/signals';
 import { addEntity, removeEntity, setAllEntities, updateEntity, withEntities } from '@ngrx/signals/entities';
-import { ITag } from '@core/dtos/tag';
+import { ITag } from '@core/models/tag';
 import { inject } from '@angular/core';
 import { TagApiService } from '@api/tag/tag-api.service';
 import { NotificationService } from '@ui/notifiaction/service/notification.service';

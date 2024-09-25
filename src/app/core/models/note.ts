@@ -1,5 +1,5 @@
-import { TModel } from '@core/dtos/util-types';
-import { ITag } from '@core/dtos/tag';
+import { TModel } from '@core/models/util-types';
+import { ITag } from '@core/models/tag';
 
 export interface INote extends TModel {
   id: number;
@@ -8,5 +8,6 @@ export interface INote extends TModel {
   userId: string;
   createdAt: string;
   updatedAt: string;
+  reminder: string | null;
   tags: ITag[];
 }

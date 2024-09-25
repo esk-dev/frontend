@@ -1,6 +1,6 @@
 import { inject, Optional } from '@angular/core';
 import { HttpService } from '@core/http';
-import { TModel } from '@core/dtos/util-types';
+import { TModel } from '@core/models/util-types';
 import { Observable } from 'rxjs';
 import { HttpEvent } from '@angular/common/http';
 import { IBaseApi } from '@api/interfaces/base-api.interface';
